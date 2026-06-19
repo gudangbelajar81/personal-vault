@@ -28,18 +28,11 @@ let pool;
 // Inisialisasi Database
 async function initDB() {
   try {
-    // Buat koneksi awal untuk membuat database jika belum ada
-    const connection = await mysql.createConnection({
-      host: dbConfig.host,
-      port: dbConfig.port,
-      user: dbConfig.user,
-      password: dbConfig.password
-    });
-    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.database}\`;`);
-    await connection.end();
-
-    // Buat pool koneksi ke database yang sudah dibuat
+    // Buat pool koneksi ke database
     pool = mysql.createPool(dbConfig);
+
+    // Tes koneksi ke pool
+    await pool.getConnection();
 
     // Buat tabel accounts jika belum ada
     await pool.query(`
