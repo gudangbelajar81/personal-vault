@@ -31,6 +31,7 @@ async function initDB() {
     // Buat koneksi awal untuk membuat database jika belum ada
     const connection = await mysql.createConnection({
       host: dbConfig.host,
+      port: dbConfig.port,
       user: dbConfig.user,
       password: dbConfig.password
     });
