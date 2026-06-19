@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/accounts');
+        const response = await axios.get('/api/accounts');
         setAccounts(response.data);
       } catch (error) {
         console.error('Gagal mengambil data dari database:', error);
@@ -44,7 +44,7 @@ function App() {
     
     if (platform && username && password) {
       try {
-        const response = await axios.post('http://localhost:3000/api/accounts', {
+        const response = await axios.post('/api/accounts', {
           platform, username, password
         });
         setAccounts([response.data, ...accounts]);
